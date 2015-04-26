@@ -36,6 +36,7 @@
     anything
     auto-async-byte-compile
     auto-save-buffers-enhanced
+    exec-path-from-shell
     )
   "起動時に自動的にインストールされるパッケージのリスト")
 
@@ -85,6 +86,10 @@
   (setq auto-async-byte-compile-init-file "~/.emacs.d/async-compile-init.el")
   (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode))
 
+;;; シェルの環境変数を取り込む
+;;; http://d.hatena.ne.jp/syohex/20130718/1374154709
+(let ((envs '("PATH" "GOPATH")))
+  (exec-if-bound (exec-path-from-shell-copy-envs envs)))
 
 ;;; 文字コード関連の共通設定
 ;; 日本語をデフォルトにする。
@@ -253,23 +258,6 @@
 ;; hide menubar/toolbar
 (exec-if-bound (menu-bar-mode 0))
 (exec-if-bound (tool-bar-mode 0))
-
-;; http://sakito.jp/emacs/emacsshell.html#path
-;; 後に記述したものの方が PATH の先頭に追加されます
-(dolist (dir (list
-              "/sbin"
-              "/usr/sbin"
-              "/bin"
-              "/usr/bin"
-              "/usr/local/sbin"
-              "/usr/local/bin"
-              (expand-file-name "~/bin")
-              ))
-  ;; PATH と exec-path に同じ内容を追加します
-  (when ;; (and
-         (file-exists-p dir) ;; (not (member dir exec-path)))
-    (setenv "PATH" (concat dir ":" (getenv "PATH")))
-    (setq exec-path (append (list dir) exec-path))))
 
 ;; Avoid running silly /usr/share/emacs/site-lisp/default.el.
 ;; (for Fedora/RHEL/CentOS)
@@ -495,6 +483,8 @@
              (local-set-key (kbd "C-c i") 'go-goto-imports)
              (local-set-key (kbd "C-c d") 'godoc)))
 
+(let ((alt-gofmt (executable-find "goimports")))
+  (if alt-gofmt (setq gofmt-command alt-gofmt)))
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; key bindings
