@@ -71,7 +71,21 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+# SSH接続時にホスト名をプロンプトに表示
+PROMPT_SSH=""
+if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] ; then
+  PROMPT_SSH="@%{$fg_bold[yellow]%}${HOST%%.*}%{$reset_color%} "
+fi
+
+case "$TERM" in
+  dumb | emacs)
+    export PROMPT="%m:%~> "
+    ;;
+  *)
+    export PROMPT=$'\n${PROMPT_SSH}in $(directory_name) $(git_dirty)$(need_push)\n› '
+    ;;
+esac
+
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
