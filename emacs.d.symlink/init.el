@@ -63,8 +63,8 @@
 ;; http://emacswiki.org/emacs/AutoRecompile
 (defun byte-compile-user-init-file-if-needed ()
   (interactive)
-  (when (and user-init-file
-             (equal (file-name-extension user-init-file) "elc"))
+  (cond
+   ((equal (file-name-extension user-init-file) "elc")
     (let* ((source (file-name-sans-extension user-init-file))
            (alt (concat source ".el")))
       (setq source (cond ((file-exists-p alt) alt)
@@ -74,8 +74,10 @@
                  (file-newer-than-file-p source user-init-file))
         (byte-compile-file source)
         (load-file source)
-	(eval-buffer nil nil)
-        (delete-other-windows)))))
+        (eval-buffer nil nil)
+        (delete-other-windows))))
+   (t
+    (byte-compile-file user-init-file))))
 
 (byte-compile-user-init-file-if-needed)
 
