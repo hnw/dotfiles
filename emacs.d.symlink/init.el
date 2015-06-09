@@ -313,7 +313,9 @@
           (lambda ()
             (when (require 'cc-subword nil t)
               (exec-if-bound (c-subword-mode 1)))
-            (c-set-style hnw/default-php-indentation-style)
+            ;; コーディングスタイルの設定。
+            ;; M-x customize-group <RET> phpでカスタマイズ可能。
+            (exec-if-bound (php-enable-default-coding-style))
             ;; C-c RET: php-browse-manual
             (if (file-readable-p local-php-manual-path)
                 (setq php-manual-url (concat "file://" local-php-manual-path))
@@ -414,6 +416,13 @@
           (lambda ()
             (setq indent-tabs-mode nil)))
 
+;; settings for C
+(add-hook 'c-mode-hook
+          (lambda ()
+            (setq c-basic-offset 4
+                  tab-width 4
+                  indent-tabs-mode t)))
+
 ;; settings for C++
 (add-hook 'c++-mode-hook
           (lambda ()
@@ -458,6 +467,9 @@
 ;;   https://raw.github.com/yoshiki/yaml-mode/
 (when (require 'yaml-mode nil t)
   (setq auto-mode-alist (cons '("\\.ya?ml$" . yaml-mode) auto-mode-alist)))
+
+;; settings for Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 ;; settings for OCaml
 (if (require 'caml-font nil t)
