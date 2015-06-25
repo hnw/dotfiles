@@ -1,5 +1,7 @@
 [include]
         path = ~/.gitconfig.local
+[init]
+        templatedir = ~/.git_templates
 [hub]
         protocol = https
 [credential]

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+PREVIOUS_HEAD=$1
+NEW_HEAD=$2
+BRANCH_SWITCH=$3
+
+current_remote_url="$(git config --get --local remote.origin.url)"
+default_name="$(git config --get user.name)"
+default_email="$(git config --get user.email)"
+local_name="$(git config --local --get user.name)"
+local_email="$(git config --local --get user.email)"
+
+if [[ "$current_remote_url" ]]; then
+    if [[ -z "$local_name" ]]; then
+        name="$(git config --get-urlmatch user.name $current_remote_url)"
+        if [[ "$name" != "$default_name" ]]; then
+            git config --local user.name "$name"
+        fi
+    fi
+    if [[ -z "$local_email" ]]; then
+        email="$(git config --get-urlmatch user.email $current_remote_url)"
+        if [[ "$email" != "$default_email" ]]; then
+            git config --local user.email "$email"
+        fi
+    fi
+else
+    echo "No remote URL"
+fi
