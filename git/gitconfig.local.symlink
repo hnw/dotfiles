@@ -1,3 +1,12 @@
+# 使い分けたいユーザー情報と、リポジトリのURL情報を書いてください。
+#
+# 変更したら、次のコマンドを打ってcommit対象から外しましょう。
+# "git update-index –assume-unchanged git/gitconfig.local.symlink"
+# （commitしてあるファイルは.gitignoreに書いてもcommit対象になります）
+
 [user]
         name = Yoshio HANAWA
-        #email = hnw@example.com
+[user "git@github.com"]
+        email = foo@example.com
+[user "git@ghe.example.com"]
+        email = bar@ghe.example.com

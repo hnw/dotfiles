@@ -5,8 +5,6 @@
 /atom.symlink/storage
 /atom.symlink/themes
 
-/git/gitconfig.local.symlink
-
 /emacs.d.symlink/elpa/
 /emacs.d.symlink/saved-places
 /emacs.d.symlink/url/cookies
