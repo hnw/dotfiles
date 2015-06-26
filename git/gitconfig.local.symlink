@@ -6,7 +6,11 @@
 
 [user]
         name = Yoshio HANAWA
-[user "git@github.com"]
+[user "ssh://github.com/"]
         email = foo@example.com
-[user "git@ghe.example.com"]
+[user "https://github.com/"]
+        email = foo@example.com
+[user "ssh://ghe.example.com/"]
+        email = bar@ghe.example.com
+[user "https://ghe.example.com/"]
         email = bar@ghe.example.com
