@@ -16,7 +16,19 @@ default_email="$(git config --get user.email)"
 local_name="$(git config --local --get user.name)"
 local_email="$(git config --local --get user.email)"
 
+
+
 if [ "$current_remote_url" ]; then
+    case $current_remote_url in
+        *://*)
+            # do nothing
+            ;;
+        *:*)
+            # convert scp-style URL to normal-form
+            #   ex. "user@host:path/" ==> "ssh://user@host/path/"
+            current_remote_url=$(echo $current_remote_url | sed 's/\(.*\):/ssh:\/\/\1\//')
+            ;;
+    esac
     if [ -z "$local_name" ]; then
         name="$(git config --get-urlmatch user.name $current_remote_url)"
         if [ "$name" != "$default_name" ]; then
