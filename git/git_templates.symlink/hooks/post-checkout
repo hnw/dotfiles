@@ -5,27 +5,28 @@ NEW_HEAD=$2
 BRANCH_SWITCH=$3
 Z40="0000000000000000000000000000000000000000"
 
-# git clone時のみ処理を行う
+# Continue only when "git clone" has been executed.
 if [ "$PREVIOUS_HEAD" != "$Z40" -o "$BRANCH_SWITCH" != "1" ]; then
   exit
 fi
 
-current_remote_url="$(git config --get --local remote.origin.url)"
+origin_name="$(git remote | head -1)"
+current_remote_url="$(git config --get --local remote.$origin_name.url)"
 default_name="$(git config --get user.name)"
 default_email="$(git config --get user.email)"
 local_name="$(git config --local --get user.name)"
 local_email="$(git config --local --get user.email)"
 
-
-
 if [ "$current_remote_url" ]; then
     case $current_remote_url in
         *://*)
-            # do nothing
+            # Normalize URL: remove leading "git+"
+            #   e.g. "git+ssh://user@host/path/" ==> "ssh://user@host/path/"
+            current_remote_url=$(echo $current_remote_url | sed 's/^git\+//')
             ;;
         *:*)
-            # convert scp-style URL to normal-form
-            #   ex. "user@host:path/" ==> "ssh://user@host/path/"
+            # Convert scp-style URL to normal-form
+            #   e.g. "user@host:path/" ==> "ssh://user@host/path/"
             current_remote_url=$(echo $current_remote_url | sed 's/\(.*\):/ssh:\/\/\1\//')
             ;;
     esac
