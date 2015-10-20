@@ -42,3 +42,5 @@
         default = simple
 [ghq]
         root = ~/src
+[url "git@github.com:hnw"]
+        pushInsteadOf = https://github.com/hnw
