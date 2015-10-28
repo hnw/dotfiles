@@ -17,6 +17,7 @@
     auto-async-byte-compile
     auto-save-buffers-enhanced
     exec-path-from-shell
+    git-gutter
     )
   "起動時に自動的にインストールされるパッケージのリスト")
 
