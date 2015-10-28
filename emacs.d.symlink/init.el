@@ -15,8 +15,11 @@
 ;;; バイトコンパイルされていないelファイルの方が新しい場合そっちをロードする
 (setq load-prefer-newer t)
 
-;;; emacs起動時にエラーを報告する
-;(setq init-loader-show-log-after-init 'error-only)
+;; emacs起動時にエラーを報告する
+;;(setq init-loader-show-log-after-init 'error-only)
 
-(init-loader-load (concat user-emacs-directory "inits"))
+;; inits/以下のファイルを必要ならバイトコンパイルする
+(setq init-loader-byte-compile t)
 
+(let ((byte-compile-warnings '(not free-vars obsolete)))
+  (init-loader-load (concat user-emacs-directory "inits")))
