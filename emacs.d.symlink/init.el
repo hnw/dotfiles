@@ -7,10 +7,12 @@
 
 ;; init-loaderがインストールされていなかったら
 ;; 明示的にinit-loader/20-package.elをload、init-loaderをインストールする
-(unless (require 'init-loader nil t)
-  (load-file (concat user-emacs-directory "inits/20-package.el"))
-  (require 'init-loader)
-)
+(when (require 'package nil t)
+  (package-initialize)
+  (unless (require 'init-loader nil t)
+    (load-file (concat user-emacs-directory "inits/20-package.el"))
+    (require 'init-loader)
+    ))
 
 ;;; バイトコンパイルされていないelファイルの方が新しい場合そっちをロードする
 (setq load-prefer-newer t)
