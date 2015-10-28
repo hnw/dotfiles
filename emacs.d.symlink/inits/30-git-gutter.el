@@ -3,8 +3,8 @@
 (custom-set-faces
  '(git-gutter:modified
    ((((class color) (background light))
-     (:foreground "DarkOrange" :weight bold))
-    (t (:foreground "orange" :weight bold))))
+     (:foreground "purple" :weight bold))
+    (t (:foreground "magenta" :weight bold))))
  '(git-gutter:added
    ((((class color) (background light))
      (:foreground "LimeGreen" :weight bold))
