@@ -55,6 +55,9 @@
 ;; display line infomation
 (line-number-mode t)
 
+;; paren-mode
+(show-paren-mode t)
+
 ;; history
 (setq-default history-length 500
               history-delete-duplicates t)
