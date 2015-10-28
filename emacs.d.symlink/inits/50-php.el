@@ -5,8 +5,9 @@
       "/usr/lib/php/data/phpman/php-chunked-xhtml/index.html")
 (add-hook 'php-mode-hook
           (lambda ()
-            (when (require 'cc-subword nil t)
-              (c-subword-mode 1))
+            ;; camelCaseなシンボルの単語区切りを認識して移動しやすくする
+            ;; https://github.com/ejmr/php-mode#subword-mode
+            (subword-mode 1)
             ;; コーディングスタイルの設定。
             ;; M-x customize-group <RET> phpでカスタマイズ可能。
             (php-enable-default-coding-style)
@@ -99,6 +100,7 @@
   ;; PHP用設定
   (add-hook 'php-mode-hook
             '(lambda()
+               (flymake-mode t)
                (when (not (fboundp 'flymake-php-init))
                  ;; flymake-php-initが未定義のバージョンだったら、自分で定義する
                  (defun flymake-php-init ()
