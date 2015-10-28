@@ -2,8 +2,14 @@
 
 (custom-set-faces
  '(git-gutter:modified
-   ((t (:foreground "Springgreen4" :weight bold))))
+   ((((class color) (background light))
+     (:foreground "DarkOrange" :weight bold))
+    (t (:foreground "orange" :weight bold))))
  '(git-gutter:added
-   ((t (:foreground "CadetBlue" :weight bold))))
- '(mcomplete-substr-method-fixed-part-face
-   ((t (:foreground "MediumVioletRed" :weight bold)))))
+   ((((class color) (background light))
+     (:foreground "LimeGreen" :weight bold))
+    (t (:foreground "green" :weight bold))))
+ '(git-gutter:deleted
+   ((((class color) (background light))
+     (:foreground "VioletRed" :weight bold))
+    (t (:foreground "red" :weight bold)))))
