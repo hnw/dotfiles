@@ -13,7 +13,7 @@
 #If not running interactively, dont't do anything
 [ -z "$PS1" ] && return
 
-FAVORIT_SHELLS="/opt/local/bin/zsh /usr/bin/zsh /bin/zsh /bin/bash"
+FAVORIT_SHELLS="/opt/local/bin/zsh /usr/local/bin/zsh /usr/bin/zsh /bin/zsh /bin/bash"
 FAVORIT_SHELL_OPT=-l
 CURRENT_SHELL="`echo $0 | sed s/^-//`"
 for FAVORIT_SHELL in $FAVORIT_SHELLS; do
