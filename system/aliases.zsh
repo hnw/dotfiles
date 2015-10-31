@@ -1,15 +1,3 @@
-# grc overides for ls
-#   Made possible through contributions from generous benefactors like
-#   `brew install coreutils`
-if $(gls &>/dev/null)
-then
-  alias ls="gls -F --color"
-  alias l="gls -lAh --color"
-  alias ll="gls -l --color"
-  alias la='gls -A --color'
-fi
-
-
 # god overrides for od
 
 \od -tx1z -Ax </dev/null >/dev/null 2>&1
@@ -44,8 +32,15 @@ else
         GNU_LS="gls"
         GNU_DIRCOLORS="gdircolors"
     else
-        GNU_LS=""
-        GNU_DIRCOLORS=""
+        \gnuls --version >/dev/null 2>&1
+        if [ "$?" -eq "0" ]; then
+	    # FreeBSD
+            GNU_LS="gnuls"
+            GNU_DIRCOLORS="dircolors"
+        else
+            GNU_LS=""
+            GNU_DIRCOLORS=""
+        fi
     fi
 fi
 
