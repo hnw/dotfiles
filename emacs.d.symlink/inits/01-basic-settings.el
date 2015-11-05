@@ -75,6 +75,5 @@
 (setq-default make-pointer-invisible t)
 
 ;; undo setting
-(setq-default undo-no-redo t
-              undo-limit 600000
+(setq-default undo-limit 600000
               undo-strong-limit 900000)
