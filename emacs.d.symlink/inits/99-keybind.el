@@ -1,6 +1,7 @@
 ;;; key bindings
 
-(define-key global-map "\C-h" 'delete-backward-char)
+;; term/bobcatの代わり
+(keyboard-translate ?\C-h 'backspace)
 
 (global-set-key "\M-n" 'browse-url-at-point)
 (global-set-key "\M-2" 'make-frame)
