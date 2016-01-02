@@ -1,7 +1,12 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 if [[ -n $SSH_CONNECTION ]]; then
     export PS1='\u@\h:\w${text} $ '
 else
     export PS1='\w${text} $ '
 fi
-export PATH="/Users/hnw/.phpenv/bin:$PATH"
-eval "$(phpenv init -)"
+if [ -d "$HOME/.phpenv/bin" ]; then
+    export PATH="$HOME/.phpenv/bin:$PATH"
+    eval "$(phpenv init -)"
+fi

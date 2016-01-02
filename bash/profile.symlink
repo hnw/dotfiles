@@ -13,6 +13,10 @@
 #If not running interactively, dont't do anything
 [ -z "$PS1" ] && return
 
+# すべてのシェル起動時に読まれるファイルを設定
+# 複雑なPS1を設定している環境で/bin/shを直接起動された場合に対処するため
+ENV=".shrc"; export ENV
+
 FAVORIT_SHELLS="/opt/local/bin/zsh /usr/local/bin/zsh /usr/bin/zsh /bin/zsh /bin/bash"
 FAVORIT_SHELL_OPT=-l
 CURRENT_SHELL="`echo $0 | sed s/^-//`"
