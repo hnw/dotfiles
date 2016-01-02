@@ -1,0 +1,7 @@
+if [[ -n $SSH_CONNECTION ]]; then
+    export PS1='\u@\h:\w${text} $ '
+else
+    export PS1='\w${text} $ '
+fi
+export PATH="/Users/hnw/.phpenv/bin:$PATH"
+eval "$(phpenv init -)"
