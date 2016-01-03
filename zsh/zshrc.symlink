@@ -1,3 +1,8 @@
+# If we are using dumb terminal, don't do anything
+if [[ "$TERM" == "dumb" || "$TERM" == "emacs" ]]; then
+  return
+fi
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
