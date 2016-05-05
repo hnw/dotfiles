@@ -18,6 +18,7 @@
     auto-save-buffers-enhanced
     exec-path-from-shell
     git-gutter
+    markdown-mode
     )
   "起動時に自動的にインストールされるパッケージのリスト")
 
