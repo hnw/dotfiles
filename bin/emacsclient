@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# emacsclient-wrapper for Homebrew environment on MacOSX
+
+if type brew >/dev/null 2>&1; then
+    EMACSCLIENT_PATH=$(brew list emacs-mac 2>/dev/null | grep 'emacsclient$')
+    if [ -z "$EMACSCLIENT_PATH" ]; then
+	EMACSCLIENT_PATH=$(brew list emacs 2>/dev/null | grep 'emacsclient$')
+    fi
+fi
+
+if [ -z "$EMACSCLIENT_PATH" ]; then
+    ifs_orig=$IFS
+    IFS=":"
+    for path in $PATH; do
+	if [ -e "$path/emacsclient" -a "$0" != "$path/emacsclient" ] ; then
+	    EMACSCLIENT_PATH="$path/emacsclient"
+	    break
+	fi
+    done
+    IFS=$ifs_orig
+fi
+
+if [ -z "$EMACSCLIENT_PATH" ]; then
+    echo "emacsclient-wrapper: Not found 'emacslient' binary"
+    exit 1
+fi
+
+$EMACSCLIENT_PATH $@
