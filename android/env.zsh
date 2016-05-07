@@ -1,9 +1,11 @@
 sdk_path_candidates=(
+    "$HOME/Library/Android/sdk"
     "$HOME/Development/adt-bundle-mac-x86_64/sdk"
     "$HOME/Development/adt-bundle-mac-x86_64-20131030/sdk"
 )
 
 ndk_path_candidates=(
+    "$HOME/Library/Android/sdk/ndk-bundle"
     "$HOME/Development/android-ndk-r10d"
     "$HOME/Development/android-ndk-r9d"
 )
