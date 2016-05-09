@@ -19,6 +19,7 @@
     exec-path-from-shell
     git-gutter
     markdown-mode
+    auto-package-update
     )
   "起動時に自動的にインストールされるパッケージのリスト")
 
@@ -28,8 +29,6 @@
 (when (require 'package nil t)
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives
-               '("marmalade" . "http://marmalade-repo.org/packages/") t)
   (package-initialize)
   (let ((pkgs (loop for pkg in my/favorite-packages
                     unless (package-installed-p pkg)
@@ -40,4 +39,7 @@
       (package-refresh-contents)
       (message "%s" " done.")
       (dolist (pkg pkgs)
-        (package-install pkg)))))
+        (package-install pkg))))
+
+  (when (require 'auto-package-update nil t)
+    (auto-package-update-maybe)))

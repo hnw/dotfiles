@@ -5,6 +5,7 @@
 /atom.symlink/packages
 /atom.symlink/storage
 /atom.symlink/themes
+/emacs.d.symlink/.last-package-update-day
 /emacs.d.symlink/elpa/
 /emacs.d.symlink/history
 /emacs.d.symlink/saved-places
