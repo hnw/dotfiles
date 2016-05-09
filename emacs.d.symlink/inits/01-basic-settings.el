@@ -28,6 +28,10 @@
   (setq-default save-place t)
   (setq save-place-file (concat user-emacs-directory "saved-places")))
 
+;; ファイルオープン時、シンボリックリンクを解決したパスで開く
+;; http://d.hatena.ne.jp/sugyan/20120105/1325766364
+(setq-default find-file-visit-truename t)
+
 (savehist-mode t)
 ;(save-place-mode t)
 
