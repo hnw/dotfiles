@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <!-- Reference: http://pqrs.org/macosx/keyremap4macbook/xml.html.en -->
+  <!-- Reference: https://pqrs.org/osx/karabiner/xml.html.en -->
   <item>
     <name>Command+Ctrl+I to Command+Tab</name>
     <identifier>private.cmd_ctrl_i</identifier>
@@ -8,6 +8,24 @@
       __KeyToKey__
       KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
       KeyCode::TAB, ModifierFlag::COMMAND_L
+    </autogen>
+  </item>
+  <item>
+    <name>Command+Ctrl+] to Command+Tab</name>
+    <identifier>private.cmd_ctrl_bracket_left</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      KeyCode::TAB, ModifierFlag::COMMAND_L
+    </autogen>
+  </item>
+  <item>
+    <name>Command+Ctrl+[ to Command+Shift_Tab</name>
+    <identifier>private.cmd_ctrl_bracket_right</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L
     </autogen>
   </item>
 </root>
