@@ -1,0 +1,4 @@
+{
+    // ウィンドウ幅に合わせて折り返し
+    "editor.wrappingColumn": 0
+}
