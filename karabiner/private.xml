@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <!-- Reference: http://pqrs.org/macosx/keyremap4macbook/xml.html.en -->
+  <item>
+    <name>Command+Ctrl+I to Command+Tab</name>
+    <identifier>private.cmd_ctrl_i</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      KeyCode::TAB, ModifierFlag::COMMAND_L
+    </autogen>
+  </item>
+</root>
