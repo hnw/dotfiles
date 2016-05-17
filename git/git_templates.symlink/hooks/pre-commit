@@ -8,8 +8,6 @@ local_name="$(git config --local --get user.name)"
 local_email="$(git config --local --get user.email)"
 config_changed=
 
-echo $current_remote_url
-
 if [ "$current_remote_url" ]; then
     case $current_remote_url in
         *://*)
@@ -27,7 +25,7 @@ if [ "$current_remote_url" ]; then
         name="$(git config --get-urlmatch user.name $current_remote_url)"
         if [ "$name" != "$default_name" ]; then
             git config --local user.name "$name"
-            echo "Set `git config` automatically: user.name=$name"
+            echo "Set 'git config' automatically: user.name=$name"
             config_changed=1
         fi
     fi
@@ -35,7 +33,7 @@ if [ "$current_remote_url" ]; then
         email="$(git config --get-urlmatch user.email $current_remote_url)"
         if [ "$email" != "$default_email" ]; then
             git config --local user.email "$email"
-            echo "Seta `git config` automatically: user.email=$email"
+            echo "Set 'git config' automatically: user.email=$email"
             config_changed=1
         fi
     fi
