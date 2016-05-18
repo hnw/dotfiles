@@ -9,6 +9,7 @@ brew 'bison'
 brew 'coreutils'
 brew 'emacs-mac', args: ['--with-modern-icon']
 brew 'flex'
+brew 'ghc'
 brew 'ghq'
 brew 'gibo'
 brew 'git'
