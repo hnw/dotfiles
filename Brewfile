@@ -1,4 +1,5 @@
 tap 'homebrew/brewdler'
+tap 'homebrew/dupes'
 tap 'railwaycat/emacsmacport'
 
 brew 'ack'
