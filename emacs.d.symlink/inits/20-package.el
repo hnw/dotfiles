@@ -20,6 +20,7 @@
     git-gutter
     markdown-mode
     auto-package-update
+    swift-mode
     )
   "起動時に自動的にインストールされるパッケージのリスト")
 
