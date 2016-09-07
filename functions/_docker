@@ -1533,7 +1533,7 @@ __docker_subcommand() {
             case $state in
                 (container)
                     if compset -P "*:"; then
-                        _remote_files -x foobar -- docker exec -i "${IPREFIX%:}" /bin/sh -c '\$@' && ret=0
+                        _remote_files -- docker exec -i "${IPREFIX%:}" /bin/sh -c '$\*' && ret=0 #  -X "%Bcontainer's files%b" '\$@'
                     else
                         __docker_containers -qS ":" && ret=0
                     fi
