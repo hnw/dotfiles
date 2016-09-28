@@ -13,6 +13,18 @@
           (lambda ()
             (setq indent-tabs-mode nil)))
 
+;; settings for Shell Script
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil
+                  sh-basic-offset 4
+                  sh-indentation 4
+                  ;; Tweak the indentation level of case-related syntax elements, to avoid
+                  ;; excessive indentation because of the larger than default value of
+                  ;; `sh-basic-offset' and other indentation options.
+                  sh-indent-for-case-label 0
+                  sh-indent-for-case-alt '+)))
+
 ;; settings for C
 (add-hook 'c-mode-hook
           (lambda ()
