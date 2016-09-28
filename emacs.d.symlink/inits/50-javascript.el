@@ -1,7 +1,17 @@
 ;; settings for JavaScript
 (add-hook 'javascript-mode-hook
           (lambda ()
-            (setq tab-width 4
-                  indent-tabs-mode nil)
-            (setq javascript-indent-level 4)
-            (setq javascript-basic-offset tab-width)))
+            (setq javascript-indent-level 2
+                  indent-tabs-mode nil)))
+
+(add-hook 'js-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2
+                  indent-tabs-mode nil)))
+
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2
+                  indent-tabs-mode nil)))
