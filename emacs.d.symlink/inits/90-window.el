@@ -6,6 +6,7 @@
   ;; 適宜なんとかしてください。
   (setq my-resolution-alist
         '(
+          ("1440x900@25" 16  nil 37)   ; 16pt,81列37行(実質32行), MB12@CocoaEmacs
           ("1440x900@24" 16  nil 37)   ; 16pt,81列37行(実質32行), MBA13@CocoaEmacs
           ;("1440x900@24" 24  nil 32)   ; 24pt,81列32行(実質27行), MBA13@CocoaEmacs
           ("1366x768@24" 16  nil 37)   ; 16pt,81列37行(実質34行), MBA11@CocoaEmacs
