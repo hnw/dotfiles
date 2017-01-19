@@ -48,9 +48,10 @@
   (dolist (japanese-input-source
            ;; ATOK対応
            ;;「*scratch*」バッファでIMを有効化した状態で「(mac-get-current-input-source)」を評価(C-j）で分かる
-           '("com.justsystems.inputmethod.atok24.Japanese"
-             "com.justsystems.inputmethod.atok25.Japanese"
+           '(
              "com.justsystems.inputmethod.atok26.Japanese"
+             "com.justsystems.inputmethod.atok27.Japanese"
+             "com.justsystems.inputmethod.atok28.Japanese"
              ))
     (mac-set-input-method-parameter japanese-input-source 'title "あ")
     (mac-set-input-method-parameter japanese-input-source 'cursor-type 'box)
