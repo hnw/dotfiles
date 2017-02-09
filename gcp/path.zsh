@@ -1,5 +1,5 @@
 GO_GAE_SDK_PATH="$HOME/Library/go_appengine"
-if [ -d "$GAE_SDK_PATH" ]; then
+if [ -d "$GO_GAE_SDK_PATH" ]; then
     PATH="$PATH:$GO_GAE_SDK_PATH"
 fi
 # Updates PATH for the Google Cloud SDK.
