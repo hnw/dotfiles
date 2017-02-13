@@ -1,6 +1,7 @@
 ;; settings for golang
 
-;; 必要なパッケージのロード
+;; see: http://emacs-jp.github.io/programming/golang.html
+
 (add-hook 'go-mode-hook
           '(lambda()
              (setq tab-width 4)
