@@ -11,6 +11,8 @@
     csharp-mode
     yaml-mode
     go-mode
+    flycheck
+    company-go
     open-junk-file
     gtags
     anything
