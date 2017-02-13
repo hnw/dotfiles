@@ -28,4 +28,13 @@
       KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L
     </autogen>
   </item>
+  <item>
+    <name>Ctrl+EISUU to EISUU</name>
+    <identifier>private.ctrl_eisuu</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      KeyCode::JIS_EISUU
+    </autogen>
+  </item>
 </root>
