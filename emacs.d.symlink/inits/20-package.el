@@ -13,6 +13,7 @@
     go-mode
     flycheck
     company-go
+    go-eldoc
     open-junk-file
     gtags
     anything
