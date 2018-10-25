@@ -14,6 +14,8 @@
     flycheck
     company-go
     go-eldoc
+    company
+    company-go
     open-junk-file
     gtags
     anything
