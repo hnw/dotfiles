@@ -1,10 +1,7 @@
-export EDITOR='atom'
-
+export EDITOR="/usr/local/bin/emacsclient"
 if [ -z "$LANG" ] ; then
-  LANG=ja_JP.UTF-8
-  export LANG
+  export LANG=ja_JP.UTF-8
 fi
 if [ -z "$LC_CTYPE" ] ; then
-  LC_CTYPE=ja_JP.UTF-8
-  export LC_CTYPE
+  export LC_CTYPE=ja_JP.UTF-8
 fi

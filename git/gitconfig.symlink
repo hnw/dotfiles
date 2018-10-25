@@ -24,7 +24,7 @@
         ui = true
 [core]
         excludesfile = ~/.gitignore
-        editor = vim
+        editor = emacsclient
         pager = lv -c
 [apply]
         whitespace = nowarn
