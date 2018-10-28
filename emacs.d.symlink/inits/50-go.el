@@ -57,3 +57,11 @@
  '(company-tooltip-common-selection
    ((((type x)) (:inherit company-tooltip-selection :weight bold))
     (t (:inherit company-tooltip-selection)))))
+
+;;; Remap company-select-next and company-select-previous to C-n and C-p
+;;; via: https://emacs.stackexchange.com/questions/2988/how-to-remap-companys-select-next-and-select-previous-keys
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
