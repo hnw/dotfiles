@@ -28,6 +28,8 @@
     auto-package-update
     swift-mode
     company-jedi
+    py-autopep8
+    flymake-python-pyflakes
     )
   "起動時に自動的にインストールされるパッケージのリスト")
 
