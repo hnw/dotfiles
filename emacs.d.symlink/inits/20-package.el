@@ -7,6 +7,7 @@
   '(
     init-loader
     php-mode
+    company-php
     haskell-mode
     csharp-mode
     yaml-mode

@@ -69,3 +69,14 @@
                       '("\\(\\(?:Parse error\\|Fatal error\\|Warning\\): .*\\) in \\(.*\\) on line \\([0-9]+\\)" 2 3 nil 1)
                       flymake-err-line-patterns))
                )))
+
+;; company-php
+;; https://github.com/xcwen/ac-php
+;; via: https://qiita.com/nanasess/items/b5dc322bac34107cf067
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (require 'company-php)
+             (company-mode t)
+             (ac-php-core-eldoc-setup) ;; enable eldoc
+             (make-local-variable 'company-backends)
+             (add-to-list 'company-backends 'company-ac-php-backend)))
