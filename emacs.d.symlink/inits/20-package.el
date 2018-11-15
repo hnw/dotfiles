@@ -27,6 +27,7 @@
     markdown-mode
     auto-package-update
     swift-mode
+    company-jedi
     )
   "起動時に自動的にインストールされるパッケージのリスト")
 
