@@ -1,4 +1,6 @@
-;; $ pip3 install jedi autopep8 flake8 epc
+;; $ pip3 install jedi autopep8 flake8 epc virtualenv
+;;
+;; run "M-x jedi:install-server"
 
 ;; company-php
 ;; https://github.com/xcwen/ac-php
