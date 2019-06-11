@@ -9,3 +9,7 @@
 
 ;; C-RETで全画面表示(Cocoa Emacs用)
 (global-set-key "\C-\M-m" 'ns-toggle-fullscreen)
+
+;; yen markの代わりにバックスラッシュを入力する
+;; via: https://nekotank.hateblo.jp/entry/20130628/1372411052
+(define-key global-map [?¥] [?\\])
