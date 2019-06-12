@@ -6,6 +6,7 @@
   ;; 適宜なんとかしてください。
   (setq my-resolution-alist
         '(
+          ("3008x1692@26" 20  nil 60)   ; 20pt,81列60行(実質51行), MacMini
           ("1440x900@25" 16  nil 37)   ; 16pt,81列37行(実質32行), MB12@CocoaEmacs
           ("1366x768@25" 12  nil 37)   ; 12pt,81列37行(実質35行), X260@NTEmacs
           ("1440x900@24" 16  nil 37)   ; 16pt,81列37行(実質32行), MBA13@CocoaEmacs
