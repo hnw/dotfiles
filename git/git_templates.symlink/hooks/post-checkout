@@ -29,6 +29,11 @@ if [ "$current_remote_url" ]; then
             #   e.g. "user@host:path/" ==> "ssh://user@host/path/"
             current_remote_url=$(echo $current_remote_url | sed 's/\(.*\):/ssh:\/\/\1\//')
             ;;
+        /*)
+            # Convert file-style URL to normal-form
+            #   e.g. "/path/" ==> "file:///path/"
+            current_remote_url=$(echo $current_remote_url | sed 's/^/file:\/\//')
+            ;;
     esac
     if [ -z "$local_name" ]; then
         name="$(git config --get-urlmatch user.name $current_remote_url)"
