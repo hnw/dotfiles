@@ -263,6 +263,8 @@
 (setq backup-enable-predicate
       (lambda (name)
         (cond
+         ((eq 0 (string-match "/Volumes/GoogleDrive/マイドライブ/Sync/" name)) nil)
+         ((eq 0 (string-match (expand-file-name "~/OneDrive/") name)) nil)
          ((eq 0 (string-match (expand-file-name "~/Dropbox/") name)) nil)
          ((eq 0 (string-match (expand-file-name "~/.zsh-functions/") name)) nil)
          ((eq 0 (string-match (file-truename "~/.zsh-functions/") name)) nil)
@@ -275,7 +277,9 @@
 ;; 同一ディレクトリに書き込まれると面倒な場合のための仕組み。
 ;; sudo以外も、TRAMPのファイル全部同じ扱いにしてもいいかなあ
 (setq auto-save-file-name-transforms
-      `((".*/Dropbox/.*" ,(expand-file-name "~/tmp/") t)
+      `((".*/Volumes/GoogleDrive/マイドライブ/Sync/.*" ,(expand-file-name "~/tmp/") t)
+        (".*/OneDrive/.*" ,(expand-file-name "~/tmp/") t)
+        (".*/Dropbox/.*" ,(expand-file-name "~/tmp/") t)
         ("^/sudo:[^/]*:/.*" ,(expand-file-name "~root/tmp/") t)
         ("^/ssh:[^/]*:/.*" ,(expand-file-name "~/tmp/") t)
         ("^/multi:[^/]*:sudo:.*" ,(expand-file-name "~root/tmp/") t)))
