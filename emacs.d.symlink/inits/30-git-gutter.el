@@ -1,4 +1,4 @@
-(global-git-gutter-mode +1)
+(global-git-gutter-mode t)
 
 (custom-set-faces
  '(git-gutter:modified

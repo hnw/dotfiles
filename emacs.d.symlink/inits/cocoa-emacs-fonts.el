@@ -1,21 +1,34 @@
 ;; Cocoa Emacs
 ;; フォントセットを作る
-(let* ((fontset-name "myfonts") ; フォントセットの名前
-       (size my-font-size) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
-       (asciifont "Menlo") ; ASCIIフォント
-       (jpfont "Hiragino Maru Gothic ProN") ; 日本語フォント
-       (font (format "%s-%d:weight=normal:slant=normal" asciifont size))
-       (fontspec (font-spec :family asciifont))
-       (jp-fontspec (font-spec :family jpfont))
-       (fsn (create-fontset-from-ascii-font font nil fontset-name)))
-  (set-fontset-font fsn 'japanese-jisx0213.2004-1 jp-fontspec)
-  (set-fontset-font fsn 'japanese-jisx0213-2 jp-fontspec)
-  (set-fontset-font fsn 'katakana-jisx0201 jp-fontspec) ; 半角カナ
-  (set-fontset-font fsn '(#x0080 . #x024F) fontspec) ; 分音符付きラテン
-  (set-fontset-font fsn '(#x0370 . #x03FF) fontspec) ; ギリシャ文字
+;;----------------------------------------
+;; フォントの設定
+;;----------------------------------------
+(when window-system
+  ;; フォントheight指定
+  (set-face-attribute 'default nil :height (* my-font-size 10))
+  ;; デフォルトフェイスにフォントセットを設定
+  ;; 起動時 default-frame-alist に従ったフレームが作成されない現象への対処
+;  (set-face-font 'default "fontset-myfonts")
+  ;; 記号をデフォルトのフォントにしない。(for Emacs 25.2)
+  (setq use-default-font-for-symbols nil)
   )
+
+;(let* ((fontset-name "myfonts") ; フォントセットの名前
+;       (size my-font-size) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
+;       (asciifont "Menlo") ; ASCIIフォント
+;       (jpfont "Hiragino Maru Gothic ProN") ; 日本語フォント
+;       (font (format "%s-%d:weight=normal:slant=normal" asciifont size))
+;       (fontspec (font-spec :family asciifont))
+;       (jp-fontspec (font-spec :family jpfont))
+;       (fsn (create-fontset-from-ascii-font font nil fontset-name)))
+;  (set-fontset-font fsn 'japanese-jisx0213.2004-1 jp-fontspec)
+;  (set-fontset-font fsn 'japanese-jisx0213-2 jp-fontspec)
+;  (set-fontset-font fsn 'katakana-jisx0201 jp-fontspec) ; 半角カナ
+;  (set-fontset-font fsn '(#x0080 . #x024F) fontspec) ; 分音符付きラテン
+;  (set-fontset-font fsn '(#x0370 . #x03FF) fontspec) ; ギリシャ文字
+;  )
 ;; デフォルトのフレームパラメータでフォントセットを指定
-(add-to-list 'default-frame-alist '(font . "fontset-myfonts"))
+;(add-to-list 'default-frame-alist '(font . "fontset-myfonts"))
 ;; フォントサイズの比を設定
 ;;         (dolist (elt '(("^-apple-hiragino.*" . 1.15)
 ;;                        (".*osaka-bold.*" . 1.15)
@@ -27,18 +40,15 @@
 ;; デフォルトフェイスにフォントセットを設定
 ;; # これは起動時に default-frame-alist に従ったフレームが
 ;; # 作成されない現象への対処
-(set-face-font 'default "fontset-myfonts")
-(setq-default line-spacing 0.15)
+;(set-face-font 'default "fontset-myfonts")
+;(setq-default line-spacing 0.15)
 ;; Cocoa Emacsで、全角記号が入れられなくなる問題を解消
-(when (fboundp 'mac-add-key-passed-to-system)
-  (mac-add-key-passed-to-system 'shift))
+;(when (fboundp 'mac-add-key-passed-to-system)
+;  (mac-add-key-passed-to-system 'shift))
 ;; 以下、inline-patch が有効なときのための設定
 ;; Cocoa EmacsがIME状態を理解するように
-(setq default-input-method "MacOSX")
-;; 日本語入力をしていても、ミニバッファに入ると英語モードに切り替える
-(when (fboundp 'mac-change-language-to-us)
-  (add-hook 'minibuffer-setup-hook 'mac-change-language-to-us)
-  )
+
+
 ;; 日本語入力のオン／オフに応じてカーソルの色を変更
 (setq default-frame-alist
       (append
@@ -68,10 +78,12 @@
 ;; Ctrl+SpaceをSpotLight＆ことえりに取られないようにする
 (when (fboundp 'mac-add-ignore-shortcut)
   (mac-add-ignore-shortcut '(control ? )))
-;; Emacs Mac Port 用設定
+
 ;; ミニバッファで入力する際に自動的にASCIIにする
 (when (fboundp 'mac-auto-ascii-mode)
-  (mac-auto-ascii-mode 1))
+  (mac-auto-ascii-mode)
+  )
+
 ;; カーソルの色を変える
 (when (fboundp 'mac-input-source)
   (defun my-mac-selected-keyboard-input-source-chage-function ()

@@ -6,17 +6,10 @@
   ;; 適宜なんとかしてください。
   (setq my-resolution-alist
         '(
-          ("3008x1692@26" 20  nil 60)   ; 20pt,81列60行(実質51行), MacMini
-          ("1440x900@25" 16  nil 37)   ; 16pt,81列37行(実質32行), MB12@CocoaEmacs
-          ("1366x768@25" 12  nil 37)   ; 12pt,81列37行(実質35行), X260@NTEmacs
-          ("1440x900@24" 16  nil 37)   ; 16pt,81列37行(実質32行), MBA13@CocoaEmacs
-          ;("1440x900@24" 24  nil 32)   ; 24pt,81列32行(実質27行), MBA13@CocoaEmacs
-          ("1366x768@24" 16  nil 37)   ; 16pt,81列37行(実質34行), MBA11@CocoaEmacs
-          ("1366x768@23" 16  nil 39)   ; 16pt,81列39行(実質34行), MBA11@CocoaEmacs
-          ;("1366x768@23" 24  nil 32)   ; 24pt,81列32行, MBA11@CocoaEmacs, プレゼン用
-          ("1366x768@22" 16  nil 34)   ; 16pt,81列34行, MBA11@CarbonEmacs
-          ("1280x800@22" nil nil 45)   ; 14pt,81列45行, MBP@CarbonEmacs
-          (nil           14  81  59))) ; 14pt,81列59行, デフォルト設定
+          ("4880x1440@29" 16 nil 40)   ; 16pt,81列40行(実質34行), MBP+display
+          ("1440x900@29"  14 nil 43)   ; 14pt,81列43行(実質38行), MBP
+          ("3008x1692@29" 20 nil 60)   ; 20pt,81列60行(実質51行), MacMini
+          (nil            14 nil 59))) ; 14pt,81列59行, デフォルト設定
 
   ;; 解像度+Emacsバージョン, 例:1366x768@23
   (setq main-display-resolution
