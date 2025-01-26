@@ -259,12 +259,21 @@
 (require 'dabbrev) ; 不要？
 (load "dabbrev-ja" t)
 
+;; ロックファイル（.#foo.txt）の設定
+;; 参考：https://apribase.net/2024/07/22/emacs-auto-save/
+(setq create-lockfiles nil) ; 作らない
+
+;; 自動セーブファイル（#foo.txt#）の設定
+;; 参考：https://apribase.net/2024/07/22/emacs-auto-save/
+(setup files
+  (:opt auto-save-default nil)) ; 作らない
+
 ;; バックアップファイル（ファイル名~）の設定
 (setq backup-enable-predicate
       (lambda (name)
         (cond
          ((eq 0 (string-match "/Volumes/GoogleDrive/マイドライブ/Sync/" name)) nil)
-         ((eq 0 (string-match (expand-file-name "~/OneDrive/") name)) nil)
+         ((eq 0 (string-match ((file-truename (expand-file-name "~/OneDrive/")) name)) nil)
          ((eq 0 (string-match (expand-file-name "~/Dropbox/") name)) nil)
          ((eq 0 (string-match (expand-file-name "~/.zsh-functions/") name)) nil)
          ((eq 0 (string-match (file-truename "~/.zsh-functions/") name)) nil)
@@ -272,17 +281,6 @@
          ((string-match "^/ssh:[^/]*:/" name) nil)
          ((string-match "^/multi:[^/]*:sudo:[^/]*:/" name) nil)
          (t (normal-backup-enable-predicate name)))))
-
-;; 自動保存ファイル（#ファイル名#）の設定
-;; 同一ディレクトリに書き込まれると面倒な場合のための仕組み。
-;; sudo以外も、TRAMPのファイル全部同じ扱いにしてもいいかなあ
-(setq auto-save-file-name-transforms
-      `((".*/Volumes/GoogleDrive/マイドライブ/Sync/.*" ,(expand-file-name "~/tmp/") t)
-        (".*/OneDrive/.*" ,(expand-file-name "~/tmp/") t)
-        (".*/Dropbox/.*" ,(expand-file-name "~/tmp/") t)
-        ("^/sudo:[^/]*:/.*" ,(expand-file-name "~root/tmp/") t)
-        ("^/ssh:[^/]*:/.*" ,(expand-file-name "~/tmp/") t)
-        ("^/multi:[^/]*:sudo:.*" ,(expand-file-name "~root/tmp/") t)))
 
 ;; keychain ENV setting (for MacOSX 10.4 only?)
 ;(if (require 'keychain-environment nil t)
