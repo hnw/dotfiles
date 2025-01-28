@@ -265,15 +265,14 @@
 
 ;; 自動セーブファイル（#foo.txt#）の設定
 ;; 参考：https://apribase.net/2024/07/22/emacs-auto-save/
-(setup files
-  (:opt auto-save-default nil)) ; 作らない
+(setq auto-save-default nil) ; 作らない
 
 ;; バックアップファイル（ファイル名~）の設定
 (setq backup-enable-predicate
       (lambda (name)
         (cond
          ((eq 0 (string-match "/Volumes/GoogleDrive/マイドライブ/Sync/" name)) nil)
-         ((eq 0 (string-match ((file-truename (expand-file-name "~/OneDrive/")) name)) nil)
+         ((eq 0 (string-match (file-truename "~/OneDrive/") name)) nil)
          ((eq 0 (string-match (expand-file-name "~/Dropbox/") name)) nil)
          ((eq 0 (string-match (expand-file-name "~/.zsh-functions/") name)) nil)
          ((eq 0 (string-match (file-truename "~/.zsh-functions/") name)) nil)
